@@ -18,7 +18,7 @@ Check name of your binairies against name used in dockerfile
 ### Create Container
 
 ```
-docker build -t jsenon/loggenerate:vX.X .
+docker build -t jsenon/loggenerator:vX.X .
 ```
 
 ### Launch Container
