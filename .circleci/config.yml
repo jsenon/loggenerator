@@ -27,10 +27,10 @@ jobs:
       - run: bash <(curl -s https://codecov.io/bash)
       - run: go build 
   deployment:
-  staging:
-    branch: master
-    commands:
-      - docker login --username=$DOCKER_USER --password=$DOCKER_PASS 
-      - docker build --rm=false -t  jsenon/loggenerator:latest .
-      - docker push jsenon/loggenerator:latest
-     
+    staging:
+      branch: master
+      commands:
+        - docker login --username=$DOCKER_USER --password=$DOCKER_PASS 
+        - docker build --rm=false -t  jsenon/loggenerator:latest .
+        - docker push jsenon/loggenerator:latest
+      
