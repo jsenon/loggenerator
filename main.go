@@ -16,6 +16,7 @@
 package main
 
 import (
+	"log"
 	"net/http"
 
 	"github.com/jsenon/loggenerator/logrusgen"
@@ -50,5 +51,8 @@ func main() {
 	r.HandleFunc("/log/zaplogger", zapgen.Generatelogger).Methods("POST")
 
 	// Static dir
-	http.ListenAndServe(":9030", handlers.CORS(originsOk, headersOk, methodsOk)(r))
+	err := http.ListenAndServe(":9030", handlers.CORS(originsOk, headersOk, methodsOk)(r))
+	if err != nil {
+		log.Fatal(err)
+	}
 }
