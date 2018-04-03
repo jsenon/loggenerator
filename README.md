@@ -1,4 +1,4 @@
-# loggenerator
+# Loggenerator
  
 This is a Log Generator Server with Logrus and Zapper samples
 
