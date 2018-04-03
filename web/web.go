@@ -1,4 +1,4 @@
-// Package Web Loggenerator.
+//Package web
 //
 // the purpose of this package is to provide Api Interface
 //
@@ -20,11 +20,13 @@
 //     - application/json
 //
 // swagger:meta
+
 package web
 
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 )
 
@@ -37,6 +39,7 @@ type statusjson struct {
 	Message string `json:"statusmessage"`
 }
 
+//Healthz func
 // swagger:route POST /healthz health
 //
 // Check health of platform
@@ -55,5 +58,8 @@ func Healthz(w http.ResponseWriter, req *http.Request) {
 	if err != nil {
 		fmt.Println("error:", err)
 	}
-	w.Write(b)
+	_, err = w.Write(b)
+	if err != nil {
+		log.Fatal(err)
+	}
 }

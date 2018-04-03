@@ -1,4 +1,4 @@
-// Package Logrus Loggenerator.
+//Package logrusgen
 //
 // the purpose of this package is to provide Api Interface
 //
@@ -20,6 +20,7 @@
 //     - application/json
 //
 // swagger:meta
+
 package logrusgen
 
 import (
@@ -40,6 +41,7 @@ type statusjson struct {
 	Message string `json:"statusmessage"`
 }
 
+//Generate func
 // swagger:route POST /log/logrus log logrus
 //
 // Generate log with logrus
@@ -75,5 +77,8 @@ func Generate(w http.ResponseWriter, req *http.Request) {
 	if err != nil {
 		fmt.Println("error:", err)
 	}
-	w.Write(b)
+	_, err = w.Write(b)
+	if err != nil {
+		log.Fatal(err)
+	}
 }

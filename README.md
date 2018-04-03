@@ -1,4 +1,5 @@
 [![CircleCI](https://circleci.com/gh/jsenon/loggenerator.svg?style=svg)](https://circleci.com/gh/jsenon/loggenerator)
+[![Go Report Card](https://goreportcard.com/badge/github.com/jsenon/loggenerator)](https://goreportcard.com/report/github.com/jsenon/loggenerator)
 
 # Loggenerator
  

@@ -1,4 +1,4 @@
-// Package Zap Loggenerator.
+//Package zapgen
 //
 // the purpose of this package is to provide Api Interface
 //
@@ -20,11 +20,13 @@
 //     - application/json
 //
 // swagger:meta
+
 package zapgen
 
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 	"time"
 
@@ -40,6 +42,7 @@ type statusjson struct {
 	Message string `json:"statusmessage"`
 }
 
+//Generatesugar func
 // swagger:route POST /log/zapsuggar log zap
 //
 // Generate Log with Sugar
@@ -51,8 +54,11 @@ type statusjson struct {
 //       200: statusjson
 func Generatesugar(w http.ResponseWriter, req *http.Request) {
 	url := "https://myexample.com"
-	logger, _ := zap.NewProduction()
-	defer logger.Sync() // flushes buffer, if any
+	logger, err := zap.NewProduction()
+	if err != nil {
+		fmt.Println("error:", err)
+	}
+	defer logger.Sync() // nolint: errcheck
 	sugar := logger.Sugar()
 	sugar.Infow("failed to fetch URL",
 		"url", url,
@@ -82,9 +88,13 @@ func Generatesugar(w http.ResponseWriter, req *http.Request) {
 	if err != nil {
 		fmt.Println("error:", err)
 	}
-	w.Write(b)
+	_, err = w.Write(b)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
+//Generatelogger func
 // swagger:route POST /log/zaplogger log zap
 //
 // Generate Log with Logger
@@ -96,8 +106,11 @@ func Generatesugar(w http.ResponseWriter, req *http.Request) {
 //       200: statusjson
 func Generatelogger(w http.ResponseWriter, req *http.Request) {
 	url := "https://myexample.com"
-	logger, _ := zap.NewProduction()
-	defer logger.Sync()
+	logger, err := zap.NewProduction()
+	if err != nil {
+		fmt.Println("error:", err)
+	}
+	defer logger.Sync() // nolint: errcheck
 	logger.Info("failed to fetch URL",
 		// Structured context as strongly typed Field values.
 		zap.String("url", url),
@@ -124,5 +137,8 @@ func Generatelogger(w http.ResponseWriter, req *http.Request) {
 	if err != nil {
 		fmt.Println("error:", err)
 	}
-	w.Write(b)
+	_, err = w.Write(b)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
