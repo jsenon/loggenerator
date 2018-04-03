@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/jsenon/loggenerator.svg?style=svg)](https://circleci.com/gh/jsenon/loggenerator)
+
 # Loggenerator
  
 This is a Log Generator Server with Logrus and Zapper samples
