@@ -27,9 +27,9 @@ jobs:
       - run: bash <(curl -s https://codecov.io/bash)
       - run: go build 
       - setup_remote_docker
-      - run: |
-        docker login -u $DOCKER_USER -p $DOCKER_PASS
-        docker run -d --name loggenerator jsenon/loggenerator:v0.1
+     - run: |
+         docker login -u $DOCKER_USER -p $DOCKER_PASS
+         docker run -d --name loggenerator jsenon/loggenerator:v0.1
 
       # build the application image
       - run: docker build -t jsenon/loggenerator:$CIRCLE_BRANCH .
