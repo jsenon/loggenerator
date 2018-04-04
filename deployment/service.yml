@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: loggenerator
+spec:
+  selector:
+    app: loggenerator
+  ports:
+  - protocol: http
+    port: 80
+    targetPort: 9030
+  type: LoadBalancer

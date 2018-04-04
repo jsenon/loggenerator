@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: loggenerator
+  labels:
+    app: loggenerator
+spec:
+  replicas: 1
+  selector:
+  matchLabels:
+    app: loggenerator
+  template:
+    metadata:
+      labels:
+        app: loggenerator
+        version: v1
+    spec:
+      containers:
+      - name: loggenerator
+        image: docker.io/jsenon/loggenerator:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9030
