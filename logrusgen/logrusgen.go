@@ -55,16 +55,19 @@ func Generate(w http.ResponseWriter, req *http.Request) {
 	url := "https://myexample.com"
 	log.SetFormatter(&log.JSONFormatter{})
 	log.WithFields(log.Fields{
+		"logger":  "logrus",
 		"url":     url,
 		"attempt": 3,
 		"backoff": time.Second,
 	}).Info("failed to fetch URL")
 	log.WithFields(log.Fields{
+		"logger":  "logrus",
 		"url":     url,
 		"attempt": 3,
 		"backoff": time.Second,
 	}).Warn("Warn failed to fetch URL")
 	log.WithFields(log.Fields{
+		"logger":  "logrus",
 		"url":     url,
 		"attempt": 3,
 		"backoff": time.Second,

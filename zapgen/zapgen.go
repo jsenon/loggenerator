@@ -61,21 +61,25 @@ func Generatesugar(w http.ResponseWriter, req *http.Request) {
 	defer logger.Sync() // nolint: errcheck
 	sugar := logger.Sugar()
 	sugar.Infow("failed to fetch URL",
+		"logger", "zapsugar",
 		"url", url,
 		"attempt", 3,
 		"backoff", time.Second,
 	)
 	sugar.Infof("failed to fetch URL",
+		"logger", "zapsugar",
 		"url", url,
 		"attempt", 3,
 		"backoff", time.Second,
 	)
 	sugar.Warnw("Warn failed to fetch URL",
+		"logger", "zapsugar",
 		"url", url,
 		"attempt", 3,
 		"backoff", time.Second,
 	)
 	sugar.Errorw("Error failed to fetch URL",
+		"logger", "zapsugar",
 		"url", url,
 		"attempt", 3,
 		"backoff", time.Second,
@@ -113,18 +117,21 @@ func Generatelogger(w http.ResponseWriter, req *http.Request) {
 	defer logger.Sync() // nolint: errcheck
 	logger.Info("failed to fetch URL",
 		// Structured context as strongly typed Field values.
+		zap.String("logger", "zaplogger"),
 		zap.String("url", url),
 		zap.Int("attempt", 3),
 		zap.Duration("backoff", time.Second),
 	)
 	logger.Warn("Warn failed to fetch URL",
 		// Structured context as strongly typed Field values.
+		zap.String("logger", "zaplogger"),
 		zap.String("url", url),
 		zap.Int("attempt", 3),
 		zap.Duration("backoff", time.Second),
 	)
 	logger.Error("Error failed to fetch URL",
 		// Structured context as strongly typed Field values.
+		zap.String("logger", "zaplogger"),
 		zap.String("url", url),
 		zap.Int("attempt", 3),
 		zap.Duration("backoff", time.Second),
