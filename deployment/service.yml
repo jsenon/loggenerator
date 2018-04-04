@@ -6,7 +6,7 @@ spec:
   selector:
     app: loggenerator
   ports:
-  - protocol: http
+  - protocol: TCP
     port: 80
     targetPort: 9030
   type: LoadBalancer
